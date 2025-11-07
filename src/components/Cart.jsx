@@ -12,7 +12,7 @@ const Cart = ({ open, items, onClose, onQty, onCheckout }) => {
           animate={{ x: 0 }}
           exit={{ x: '100%' }}
           transition={{ type: 'spring', stiffness: 260, damping: 30 }}
-          className="fixed top-0 right-0 h-screen w-full max-w-md bg-zinc-950 text-white z-50 shadow-2xl border-l border-white/10"
+          className="fixed top-0 right-0 h-screen w-full max-w-md bg-zinc-950 text-white z-[70] shadow-2xl border-l border-white/10"
           role="dialog"
           aria-label="Cart"
         >
@@ -25,7 +25,7 @@ const Cart = ({ open, items, onClose, onQty, onCheckout }) => {
               <p className="text-white/70">Your cart is empty.</p>
             ) : (
               items.map(item => (
-                <div key={item.id} className="flex items-center gap-3 border border-white/10 rounded-lg p-3">
+                <div key={item.id} className="flex items-center gap-3 border border-white/10 rounded-lg p-3 bg-zinc-900/60">
                   <img src={item.image} alt="" className="w-16 h-16 object-cover rounded" />
                   <div className="flex-1">
                     <p className="font-medium">{item.name}</p>
@@ -40,17 +40,12 @@ const Cart = ({ open, items, onClose, onQty, onCheckout }) => {
               ))
             )}
           </div>
-          <div className="h-16 px-4 border-t border-white/10 flex items-center justify-between">
+          <div className="h-16 px-4 border-t border-white/10 flex items-center justify-between bg-zinc-950">
             <span className="font-semibold">Total</span>
             <span className="font-semibold">${total.toFixed(2)}</span>
           </div>
-          <div className="px-4 pb-6">
-            <button
-              onClick={onCheckout}
-              className="w-full py-3 rounded-lg bg-emerald-500 text-black font-medium hover:bg-emerald-400"
-            >
-              Checkout
-            </button>
+          <div className="px-4 pb-6 bg-zinc-950">
+            <button onClick={onCheckout} className="w-full py-3 rounded-lg bg-emerald-500 text-black font-medium hover:bg-emerald-400">Checkout</button>
           </div>
         </motion.aside>
       )}
